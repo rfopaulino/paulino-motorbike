@@ -1,0 +1,6 @@
+@Paulino.Motorbike.Api_HostAddress = http://localhost:5287
+
+GET {{Paulino.Motorbike.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

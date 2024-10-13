@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{ECFF7985-6281-4C9A-8E81-A2AF40BB946D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{BD23E61D-CBA3-49E1-8DC4-1487FBC588C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{BADE34C6-C35E-489B-9EB8-DE10A94961CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Data", "3.1 - Data", "{D24AE091-10B4-4772-B6D6-417ED16F08ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - CrossCutting", "3.2 - CrossCutting", "{0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Test", "4 - Test", "{9DA5C730-2964-4A3B-96EB-F89288229EAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Api", "src\Paulino.Motorbike.Api\Paulino.Motorbike.Api.csproj", "{62A487FA-13D5-4685-B2A8-061A4949E756}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Domain", "src\Paulino.Motorbike.Domain\Paulino.Motorbike.Domain.csproj", "{666DF7EA-555B-48F0-B072-A36E0BC05D48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.Data", "src\Paulino.Motorbike.Infra.Data\Paulino.Motorbike.Infra.Data.csproj", "{DC8ABC0A-644D-4DDC-914B-8348FE141547}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62A487FA-13D5-4685-B2A8-061A4949E756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A487FA-13D5-4685-B2A8-061A4949E756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A487FA-13D5-4685-B2A8-061A4949E756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A487FA-13D5-4685-B2A8-061A4949E756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{666DF7EA-555B-48F0-B072-A36E0BC05D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{666DF7EA-555B-48F0-B072-A36E0BC05D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{666DF7EA-555B-48F0-B072-A36E0BC05D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{666DF7EA-555B-48F0-B072-A36E0BC05D48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC8ABC0A-644D-4DDC-914B-8348FE141547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC8ABC0A-644D-4DDC-914B-8348FE141547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC8ABC0A-644D-4DDC-914B-8348FE141547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC8ABC0A-644D-4DDC-914B-8348FE141547}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D24AE091-10B4-4772-B6D6-417ED16F08ED} = {BADE34C6-C35E-489B-9EB8-DE10A94961CB}
+		{0EA4F73C-3DE1-404C-A927-0A4FB94D58DC} = {BADE34C6-C35E-489B-9EB8-DE10A94961CB}
+		{62A487FA-13D5-4685-B2A8-061A4949E756} = {ECFF7985-6281-4C9A-8E81-A2AF40BB946D}
+		{666DF7EA-555B-48F0-B072-A36E0BC05D48} = {BD23E61D-CBA3-49E1-8DC4-1487FBC588C5}
+		{DC8ABC0A-644D-4DDC-914B-8348FE141547} = {D24AE091-10B4-4772-B6D6-417ED16F08ED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F2C6219-77ED-4697-BB41-1CA6DC5E0713}
+	EndGlobalSection
+EndGlobal

@@ -31,7 +31,6 @@
 *.lock.json
 
 # ASP.NET Core
-appsettings*.json
 *.db
 *.pdb
 *.mdb
