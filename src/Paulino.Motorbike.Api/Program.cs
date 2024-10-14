@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Paulino.Motorbike.Domain.Base;
 using Paulino.Motorbike.Infra.Data.EF;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<BaseResponse>());
 
 builder.Services.AddControllers();
 
@@ -17,6 +18,8 @@ builder.Services.AddSwaggerGen(options =>
         Title = "Paulino Motorbike",
         Description = "Aplicação para gerenciar aluguel de motos e entregadores"
     });
+
+    options.EnableAnnotations();
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>();

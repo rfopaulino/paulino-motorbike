@@ -6,4 +6,21 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.10.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Driver\Validators\" />
+    <Folder Include="Motorbike\Validators\" />
+    <Folder Include="Rental\Validators\" />
+    <Folder Include="Rental\Responses\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Paulino.Motorbike.Infra.CrossCutting\Paulino.Motorbike.Infra.CrossCutting.csproj" />
+  </ItemGroup>
+
 </Project>
