@@ -12,7 +12,7 @@ namespace Paulino.Motorbike.Infra.Data.EF.Mapping
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired();
+            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired().HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
             builder.Property(x => x.TermDays).HasColumnType("integer").IsRequired();
             builder.Property(x => x.Amount).HasColumnType("decimal(16,4)").IsRequired();
             builder.Property(x => x.AdditionalDaily).HasColumnType("decimal(16,4)").IsRequired();

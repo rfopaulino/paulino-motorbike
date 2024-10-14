@@ -12,14 +12,14 @@ namespace Paulino.Motorbike.Infra.Data.EF.Mapping
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired();
+            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired().HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
             builder.Property(x => x.Description).HasColumnType("varchar(300)").IsRequired();
             builder.Property(x => x.Amount).HasColumnType("decimal(16,4)").IsRequired();
+            builder.Property(x => x.RentalId).HasColumnType("integer").IsRequired();
 
-            builder.HasOne<Rental>()
+            builder.HasOne(x => x.Rental)
                 .WithMany()
-                .HasForeignKey(x => x.RentalId)
-                .IsRequired();
+                .HasForeignKey(x => x.RentalId);
         }
     }
 }

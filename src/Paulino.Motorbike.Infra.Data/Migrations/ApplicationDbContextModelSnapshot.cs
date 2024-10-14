@@ -36,16 +36,18 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                         .HasColumnName("cnh_type_id");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
-                    b.Property<int>("DocumentId")
+                    b.Property<int?>("DocumentId")
                         .HasColumnType("integer")
                         .HasColumnName("document_id");
 
                     b.Property<string>("Number")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(20)")
                         .HasColumnName("number");
 
                     b.HasKey("Id");
@@ -54,7 +56,7 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
 
                     b.HasIndex("DocumentId");
 
-                    b.ToTable("cnh");
+                    b.ToTable("cnh", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.CNHType", b =>
@@ -67,17 +69,19 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(30)")
                         .HasColumnName("name");
 
                     b.HasKey("Id");
 
-                    b.ToTable("cnh_type");
+                    b.ToTable("cnh_type", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.Document", b =>
@@ -90,8 +94,10 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int>("DocumentTypeId")
                         .HasColumnType("integer")
@@ -99,19 +105,19 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
 
                     b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(300)")
                         .HasColumnName("image");
 
                     b.Property<string>("Metadata")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("jsonb")
                         .HasColumnName("metadata");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DocumentTypeId");
 
-                    b.ToTable("document");
+                    b.ToTable("document", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.DocumentDriver", b =>
@@ -124,8 +130,10 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int>("DocumentId")
                         .HasColumnType("integer")
@@ -141,7 +149,7 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
 
                     b.HasIndex("DriverId");
 
-                    b.ToTable("document_driver");
+                    b.ToTable("document_driver", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.DocumentType", b =>
@@ -154,17 +162,19 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(30)")
                         .HasColumnName("name");
 
                     b.HasKey("Id");
 
-                    b.ToTable("document_type");
+                    b.ToTable("document_type", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.Driver", b =>
@@ -177,7 +187,7 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Birthdate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("date")
                         .HasColumnName("birthdate");
 
                     b.Property<int>("CNHId")
@@ -186,23 +196,25 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
 
                     b.Property<string>("CNPJ")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(20)")
                         .HasColumnName("cnpj");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(300)")
                         .HasColumnName("name");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CNHId");
 
-                    b.ToTable("driver");
+                    b.ToTable("driver", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.Motorbike", b =>
@@ -215,26 +227,28 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Model")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(100)")
                         .HasColumnName("model");
 
                     b.Property<string>("Plate")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(10)")
                         .HasColumnName("plate");
 
-                    b.Property<int>("Year")
-                        .HasColumnType("integer")
+                    b.Property<short>("Year")
+                        .HasColumnType("smallint")
                         .HasColumnName("year");
 
                     b.HasKey("Id");
 
-                    b.ToTable("motorbike");
+                    b.ToTable("motorbike", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.PaymentMethod", b =>
@@ -247,17 +261,19 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(30)")
                         .HasColumnName("name");
 
                     b.HasKey("Id");
 
-                    b.ToTable("payment_method");
+                    b.ToTable("payment_method", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.Plan", b =>
@@ -270,23 +286,25 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("AdditionalDaily")
-                        .HasColumnType("numeric")
+                        .HasColumnType("decimal(16,4)")
                         .HasColumnName("additional_daily");
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("numeric")
+                        .HasColumnType("decimal(16,4)")
                         .HasColumnName("amount");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean")
                         .HasColumnName("is_active");
 
                     b.Property<decimal>("PercentageFine")
-                        .HasColumnType("numeric")
+                        .HasColumnType("decimal(5,2)")
                         .HasColumnName("percentage_fine");
 
                     b.Property<int>("TermDays")
@@ -295,7 +313,7 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("plan");
+                    b.ToTable("plan", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.Rental", b =>
@@ -308,19 +326,21 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int>("DriverId")
                         .HasColumnType("integer")
                         .HasColumnName("driver_id");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamptz")
                         .HasColumnName("end_date");
 
                     b.Property<DateTime>("ExpectedEndDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamptz")
                         .HasColumnName("expected_end_date");
 
                     b.Property<int>("MotorbikeId")
@@ -332,11 +352,11 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                         .HasColumnName("plan_id");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamptz")
                         .HasColumnName("start_date");
 
                     b.Property<decimal>("TotalAmount")
-                        .HasColumnType("numeric")
+                        .HasColumnType("decimal(16,4)")
                         .HasColumnName("total_amount");
 
                     b.HasKey("Id");
@@ -347,7 +367,7 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
 
                     b.HasIndex("PlanId");
 
-                    b.ToTable("rental");
+                    b.ToTable("rental", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.RentalFine", b =>
@@ -360,16 +380,18 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("numeric")
+                        .HasColumnType("decimal(16,4)")
                         .HasColumnName("amount");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamptz")
+                        .HasColumnName("created_date")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasColumnType("varchar(300)")
                         .HasColumnName("description");
 
                     b.Property<int>("RentalId")
@@ -380,12 +402,12 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
 
                     b.HasIndex("RentalId");
 
-                    b.ToTable("rental_fine");
+                    b.ToTable("rental_fine", (string)null);
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.CNH", b =>
                 {
-                    b.HasOne("Paulino.Motorbike.Infra.Data.EF.Entities.CNHType", "Type")
+                    b.HasOne("Paulino.Motorbike.Infra.Data.EF.Entities.CNHType", "CNHType")
                         .WithMany()
                         .HasForeignKey("CNHTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -393,24 +415,22 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
 
                     b.HasOne("Paulino.Motorbike.Infra.Data.EF.Entities.Document", "Document")
                         .WithMany()
-                        .HasForeignKey("DocumentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DocumentId");
+
+                    b.Navigation("CNHType");
 
                     b.Navigation("Document");
-
-                    b.Navigation("Type");
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.Document", b =>
                 {
-                    b.HasOne("Paulino.Motorbike.Infra.Data.EF.Entities.DocumentType", "Type")
+                    b.HasOne("Paulino.Motorbike.Infra.Data.EF.Entities.DocumentType", "DocumentType")
                         .WithMany()
                         .HasForeignKey("DocumentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Type");
+                    b.Navigation("DocumentType");
                 });
 
             modelBuilder.Entity("Paulino.Motorbike.Infra.Data.EF.Entities.DocumentDriver", b =>

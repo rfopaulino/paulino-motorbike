@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Paulino.Motorbike.Infra.Data.EF.Entities;
+using Paulino.Motorbike.Infra.Data.EF.Mapping;
 using System.Text;
 
 namespace Paulino.Motorbike.Infra.Data.EF
@@ -26,6 +27,18 @@ namespace Paulino.Motorbike.Infra.Data.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new CNHMap());
+            modelBuilder.ApplyConfiguration(new CNHTypeMap());
+            modelBuilder.ApplyConfiguration(new DocumentDriverMap());
+            modelBuilder.ApplyConfiguration(new DocumentMap());
+            modelBuilder.ApplyConfiguration(new DocumentTypeMap());
+            modelBuilder.ApplyConfiguration(new DriverMap());
+            modelBuilder.ApplyConfiguration(new MotorbikeMap());
+            modelBuilder.ApplyConfiguration(new PaymentMethodMap());
+            modelBuilder.ApplyConfiguration(new PlanMap());
+            modelBuilder.ApplyConfiguration(new RentalFineMap());
+            modelBuilder.ApplyConfiguration(new RentalMap());
+
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
                 entity.SetTableName(ConvertToUnderscore(entity.GetTableName()));

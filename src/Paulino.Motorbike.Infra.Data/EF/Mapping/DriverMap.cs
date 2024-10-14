@@ -12,15 +12,15 @@ namespace Paulino.Motorbike.Infra.Data.EF.Mapping
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired();
+            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired().HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
             builder.Property(x => x.Name).HasColumnType("varchar(300)").IsRequired();
             builder.Property(x => x.CNPJ).HasColumnType("varchar(20)").IsRequired();
             builder.Property(x => x.Birthdate).HasColumnType("date").IsRequired();
+            builder.Property(x => x.CNHId).HasColumnType("integer").IsRequired();
 
-            builder.HasOne<CNH>()
+            builder.HasOne(x => x.CNH)
                 .WithMany()
-                .HasForeignKey(x => x.CNHId)
-                .IsRequired();
+                .HasForeignKey(x => x.CNHId);
         }
     }
 }

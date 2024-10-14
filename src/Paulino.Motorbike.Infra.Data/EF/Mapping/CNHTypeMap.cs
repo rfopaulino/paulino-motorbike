@@ -11,7 +11,7 @@ namespace Paulino.Motorbike.Infra.Data.EF.Mapping
             builder.ToTable(nameof(CNHType));
 
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired();
+            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired().HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
             builder.Property(x => x.Name).HasColumnType("varchar(30)").IsRequired();
         }
     }

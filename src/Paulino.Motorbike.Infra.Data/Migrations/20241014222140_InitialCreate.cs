@@ -18,8 +18,8 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(type: "text", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    name = table.Column<string>(type: "varchar(30)", nullable: false),
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -32,8 +32,8 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(type: "text", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    name = table.Column<string>(type: "varchar(30)", nullable: false),
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -46,10 +46,10 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    year = table.Column<int>(type: "integer", nullable: false),
-                    model = table.Column<string>(type: "text", nullable: false),
-                    plate = table.Column<string>(type: "text", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    year = table.Column<short>(type: "smallint", nullable: false),
+                    model = table.Column<string>(type: "varchar(100)", nullable: false),
+                    plate = table.Column<string>(type: "varchar(10)", nullable: false),
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -62,8 +62,8 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(type: "text", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    name = table.Column<string>(type: "varchar(30)", nullable: false),
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -77,11 +77,11 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     term_days = table.Column<int>(type: "integer", nullable: false),
-                    amount = table.Column<decimal>(type: "numeric", nullable: false),
-                    additional_daily = table.Column<decimal>(type: "numeric", nullable: false),
-                    percentage_fine = table.Column<decimal>(type: "numeric", nullable: false),
+                    amount = table.Column<decimal>(type: "numeric(16,4)", nullable: false),
+                    additional_daily = table.Column<decimal>(type: "numeric(16,4)", nullable: false),
+                    percentage_fine = table.Column<decimal>(type: "numeric(5,2)", nullable: false),
                     is_active = table.Column<bool>(type: "boolean", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -94,10 +94,10 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    image = table.Column<string>(type: "text", nullable: false),
-                    metadata = table.Column<string>(type: "text", nullable: false),
+                    image = table.Column<string>(type: "varchar(300)", nullable: false),
+                    metadata = table.Column<string>(type: "jsonb", nullable: false),
                     document_type_id = table.Column<int>(type: "integer", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -116,10 +116,10 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    number = table.Column<string>(type: "text", nullable: false),
+                    number = table.Column<string>(type: "varchar(20)", nullable: false),
                     cnh_type_id = table.Column<int>(type: "integer", nullable: false),
-                    document_id = table.Column<int>(type: "integer", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    document_id = table.Column<int>(type: "integer", nullable: true),
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -134,8 +134,7 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                         name: "FK_cnh_document_document_id",
                         column: x => x.document_id,
                         principalTable: "document",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
@@ -144,11 +143,11 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(type: "text", nullable: false),
-                    cnpj = table.Column<string>(type: "text", nullable: false),
-                    birthdate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    name = table.Column<string>(type: "varchar(300)", nullable: false),
+                    cnpj = table.Column<string>(type: "varchar(20)", nullable: false),
+                    birthdate = table.Column<DateTime>(type: "date", nullable: false),
                     cnh_id = table.Column<int>(type: "integer", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -169,7 +168,7 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     driver_id = table.Column<int>(type: "integer", nullable: false),
                     document_id = table.Column<int>(type: "integer", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -194,14 +193,14 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    start_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    end_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    expected_end_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    total_amount = table.Column<decimal>(type: "numeric", nullable: false),
+                    start_date = table.Column<DateTime>(type: "timestamptz", nullable: false),
+                    end_date = table.Column<DateTime>(type: "timestamptz", nullable: false),
+                    expected_end_date = table.Column<DateTime>(type: "timestamptz", nullable: false),
+                    total_amount = table.Column<decimal>(type: "numeric(16,4)", nullable: false),
                     motorbike_id = table.Column<int>(type: "integer", nullable: false),
                     driver_id = table.Column<int>(type: "integer", nullable: false),
                     plan_id = table.Column<int>(type: "integer", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -232,10 +231,10 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    description = table.Column<string>(type: "text", nullable: false),
-                    amount = table.Column<decimal>(type: "numeric", nullable: false),
+                    description = table.Column<string>(type: "varchar(300)", nullable: false),
+                    amount = table.Column<decimal>(type: "numeric(16,4)", nullable: false),
                     rental_id = table.Column<int>(type: "integer", nullable: false),
-                    created_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_date = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {

@@ -11,7 +11,7 @@ namespace Paulino.Motorbike.Infra.Data.EF.Mapping
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired();
+            builder.Property(x => x.CreatedDate).HasColumnType("timestamptz").IsRequired().HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
             builder.Property(x => x.Year).HasColumnType("smallint").IsRequired();
             builder.Property(x => x.Model).HasColumnType("varchar(100)").IsRequired();
             builder.Property(x => x.Plate).HasColumnType("varchar(10)").IsRequired();

@@ -8,6 +8,6 @@ namespace Paulino.Motorbike.Infra.Data.EF.Entities
         public string Metadata { get; set; }
 
         public int DocumentTypeId { get; set; }
-        public DocumentType Type { get; set; }
+        public DocumentType DocumentType { get; set; }
     }
 }

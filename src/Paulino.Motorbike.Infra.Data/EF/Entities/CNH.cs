@@ -7,9 +7,9 @@ namespace Paulino.Motorbike.Infra.Data.EF.Entities
         public string Number { get; set; }
 
         public int CNHTypeId { get; set; }
-        public CNHType Type { get; set; }
+        public CNHType CNHType { get; set; }
 
-        public int DocumentId { get; set; }
-        public Document Document { get; set; }
+        public int? DocumentId { get; set; }
+        public Document? Document { get; set; }
     }
 }
