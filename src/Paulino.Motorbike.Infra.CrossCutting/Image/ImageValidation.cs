@@ -1,8 +1,8 @@
 ﻿using SkiaSharp;
 
-namespace Paulino.Motorbike.Infra.CrossCutting.CustomValidations
+namespace Paulino.Motorbike.Infra.CrossCutting.Image
 {
-    public static class ImageExtensionValidation
+    public class ImageValidation
     {
         public static bool Validate(string base64)
         {
@@ -19,12 +19,7 @@ namespace Paulino.Motorbike.Infra.CrossCutting.CustomValidations
                 {
                     using (SKCodec codec = SKCodec.Create(ms))
                     {
-                        if (codec == null)
-                        {
-                            return false;
-                        }
-
-                        return codec.EncodedFormat == SKEncodedImageFormat.Png || codec.EncodedFormat == SKEncodedImageFormat.Bmp;
+                        return codec != null && codec.Info != null;
                     }
                 }
             }

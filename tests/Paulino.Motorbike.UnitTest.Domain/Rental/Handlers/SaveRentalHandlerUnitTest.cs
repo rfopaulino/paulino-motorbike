@@ -1,6 +1,7 @@
 ﻿using Moq;
 using Paulino.Motorbike.Domain.Rental.Handlers;
 using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.Data.Dapper.Base;
 using Paulino.Motorbike.Infra.Data.EF;
 using Paulino.Motorbike.UnitTest.Domain.Rental.Requests;
 
@@ -9,14 +10,16 @@ namespace Paulino.Motorbike.UnitTest.Domain.Rental.Handlers
     public class SaveRentalHandlerUnitTest
     {
         private readonly Mock<IApplicationDbContext> _dbContextMock;
+        private readonly Mock<IDapperRepository> _dapperMock;
 
         private readonly SaveRentalHandler _handler;
 
         public SaveRentalHandlerUnitTest()
         {
             _dbContextMock = new Mock<IApplicationDbContext>();
+            _dapperMock = new Mock<IDapperRepository>();
 
-            _handler = new SaveRentalHandler(_dbContextMock.Object);
+            _handler = new SaveRentalHandler(_dbContextMock.Object, _dapperMock.Object);
         }
 
         [Fact]

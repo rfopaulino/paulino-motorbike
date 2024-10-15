@@ -5,6 +5,7 @@ using Paulino.Motorbike.Domain.Driver.Requests;
 using Paulino.Motorbike.Domain.Driver.Validators;
 using Paulino.Motorbike.Domain.Enums;
 using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.CrossCutting.Image;
 using Paulino.Motorbike.Infra.Data.EF;
 using Paulino.Motorbike.Infra.Data.EF.Entities;
 
@@ -32,15 +33,39 @@ namespace Paulino.Motorbike.Domain.Driver.Handlers
                 if (driver == null)
                     throw new BadRequestException("Dados inválidos");
 
-                var document = new Document(request.Image, "{}", (int)DocumentTypeEnum.CNH);
+                var filePath = SaveImage(request.Image);
+
+                var document = new Document(filePath, "{}", (int)DocumentTypeEnum.CNH);
                 driver.CNH.Document = document;
                 await _dbContext.AddAsync(document);
+                await _dbContext.SaveChangesAsync();
+
+                await _dbContext.AddAsync(new DocumentDriver(driver, document));
                 await _dbContext.SaveChangesAsync();
 
                 transaction.Commit();
             }
 
             return new();
+        }
+
+        private string SaveImage(string base64)
+        {
+            var extension = ImageGetExtension.Get(base64);
+
+            if (extension == null)
+                throw new BadRequestException("Imagem inválida");
+
+            var directoryPath = Path.Combine(Environment.CurrentDirectory, "Images", "Driver", "CNH");
+            Directory.CreateDirectory(directoryPath);
+
+            var fileName = string.Concat(Guid.NewGuid().ToString(), ".", extension);
+
+            var filePath = Path.Combine(directoryPath, fileName);
+
+            ImageSave.Save(base64, filePath);
+
+            return filePath;
         }
     }
 }

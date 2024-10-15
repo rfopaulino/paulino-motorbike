@@ -37,6 +37,7 @@ namespace Paulino.Motorbike.Api.Mediator
                 else if (ex is ValidationException)
                 {
                     return new BadRequestObjectResult(baseResponse);
+
                 }
 
                 throw;

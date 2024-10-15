@@ -29,5 +29,7 @@ namespace Paulino.Motorbike.Infra.Data.EF.Entities
 
         public int PlanId { get; set; }
         public Plan Plan { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

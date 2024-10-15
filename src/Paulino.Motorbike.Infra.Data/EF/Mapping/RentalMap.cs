@@ -20,6 +20,7 @@ namespace Paulino.Motorbike.Infra.Data.EF.Mapping
             builder.Property(x => x.MotorbikeId).HasColumnType("integer").IsRequired();
             builder.Property(x => x.DriverId).HasColumnType("integer").IsRequired();
             builder.Property(x => x.PlanId).HasColumnType("integer").IsRequired();
+            builder.Property(x => x.IsActive).HasColumnType("boolean").IsRequired().HasDefaultValueSql("true").ValueGeneratedOnAdd();
 
             builder.HasOne(x => x.Motorbike)
                 .WithMany()

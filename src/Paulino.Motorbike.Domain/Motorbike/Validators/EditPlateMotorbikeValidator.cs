@@ -10,7 +10,7 @@ namespace Paulino.Motorbike.Domain.Motorbike.Validators
             RuleFor(x => x.MotorbikeId).NotEmpty();
             RuleFor(x => x.MotorbikeId).GreaterThan(0);
             RuleFor(x => x.Plate).NotEmpty();
-            RuleFor(x => x.Plate).Length(7);
+            RuleFor(x => x.PlateUnformatted).Length(7);
         }
     }
 }

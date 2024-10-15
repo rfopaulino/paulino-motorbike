@@ -11,7 +11,7 @@ namespace Paulino.Motorbike.Domain.Motorbike.Validators
             RuleFor(x => x.Year).GreaterThanOrEqualTo(2014);
             RuleFor(x => x.Model).NotEmpty();
             RuleFor(x => x.Plate).NotEmpty();
-            RuleFor(x => x.Plate).Length(7);
+            RuleFor(x => x.PlateUnformatted).Length(7);
         }
     }
 }

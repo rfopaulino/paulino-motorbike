@@ -26,7 +26,7 @@ namespace Paulino.Motorbike.Domain.Motorbike.Handlers
             if (motorbike == null)
                 throw new BadRequestException("Dados inválidos");
 
-            motorbike.Plate = request.Plate;
+            motorbike.Plate = request.PlateUnformatted;
             await _dbContext.SaveChangesAsync();
 
             return new();

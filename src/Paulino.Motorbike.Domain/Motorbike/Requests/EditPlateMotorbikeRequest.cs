@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Newtonsoft.Json;
 using Paulino.Motorbike.Domain.Base;
+using Paulino.Motorbike.Infra.CrossCutting.Regex;
 
 namespace Paulino.Motorbike.Domain.Motorbike.Requests
 {
@@ -10,5 +11,8 @@ namespace Paulino.Motorbike.Domain.Motorbike.Requests
 
         [JsonIgnore]
         public int MotorbikeId { get; } = motorbikeId;
+
+        [JsonIgnore]
+        public string PlateUnformatted => LetterAndNumberRegex.Apply(Plate)?.ToUpper();
     }
 }

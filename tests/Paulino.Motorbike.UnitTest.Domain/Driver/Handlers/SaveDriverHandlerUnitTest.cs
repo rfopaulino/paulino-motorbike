@@ -3,8 +3,8 @@ using Moq;
 using Paulino.Motorbike.Domain.Driver.Handlers;
 using Paulino.Motorbike.Domain.Enums;
 using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.Data.Dapper.Base;
 using Paulino.Motorbike.Infra.Data.EF;
-using Paulino.Motorbike.Infra.Data.EF.Entities;
 using Paulino.Motorbike.UnitTest.Domain.Base;
 using Paulino.Motorbike.UnitTest.Domain.Driver.Requests;
 
@@ -14,6 +14,7 @@ namespace Paulino.Motorbike.UnitTest.Domain.Driver.Handlers
     {
         private readonly Mock<IApplicationDbContext> _dbContextMock;
         private readonly Mock<IDbContextTransaction> _transactionMock;
+        private readonly Mock<IDapperRepository> _dapperMock;
 
         private readonly SaveDriverHandler _handler;
 
@@ -21,8 +22,9 @@ namespace Paulino.Motorbike.UnitTest.Domain.Driver.Handlers
         {
             _dbContextMock = new Mock<IApplicationDbContext>();
             _transactionMock = new Mock<IDbContextTransaction>();
+            _dapperMock = new Mock<IDapperRepository>();
 
-            _handler = new SaveDriverHandler(_dbContextMock.Object);
+            _handler = new SaveDriverHandler(_dbContextMock.Object, _dapperMock.Object);
         }
 
         [Fact]

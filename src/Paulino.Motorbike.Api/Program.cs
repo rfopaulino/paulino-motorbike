@@ -1,7 +1,10 @@
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Paulino.Motorbike.Domain.Base;
+using Paulino.Motorbike.Infra.Data.Dapper.Base;
 using Paulino.Motorbike.Infra.Data.EF;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,8 +28,12 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+builder.Services.AddScoped<IDbConnection>(db => new SqlConnection(connectionString));
+builder.Services.AddScoped<IDapperRepository>(x => new DapperRepository(connectionString));
 
 var app = builder.Build();
 
