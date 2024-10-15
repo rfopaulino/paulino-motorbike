@@ -2,7 +2,7 @@
 {
     public enum PaymentMethodEnum
     {
-        Card,
+        Card = 1,
         Cash,
         BankTransfer
     }

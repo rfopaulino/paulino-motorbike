@@ -2,7 +2,7 @@
 {
     public enum CNHTypeEnum
     {
-        A,
+        A = 1,
         B,
         C,
         D,

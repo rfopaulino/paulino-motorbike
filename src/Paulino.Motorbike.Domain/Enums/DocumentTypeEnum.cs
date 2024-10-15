@@ -2,6 +2,6 @@
 {
     public enum DocumentTypeEnum
     {
-        CNH
+        CNH = 1
     }
 }

@@ -56,7 +56,7 @@ namespace Paulino.Motorbike.UnitTest.Domain.Rental.Requests
 
         public SaveRentalRequest Build()
         {
-            return new SaveRentalRequest(_startDate, _endDate, _expectedEndDate, _totalAmount, _motorbikeId, _driverId, _planId);
+            return new SaveRentalRequest(_motorbikeId, _driverId, _planId);
         }
     }
 }

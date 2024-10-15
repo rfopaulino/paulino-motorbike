@@ -289,15 +289,15 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                         .HasColumnType("decimal(16,4)")
                         .HasColumnName("additional_daily");
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(16,4)")
-                        .HasColumnName("amount");
-
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamptz")
                         .HasColumnName("created_date")
                         .HasDefaultValueSql("NOW()");
+
+                    b.Property<decimal>("DailyAmount")
+                        .HasColumnType("decimal(16,4)")
+                        .HasColumnName("daily_amount");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean")
@@ -339,7 +339,7 @@ namespace Paulino.Motorbike.Infra.Data.Migrations
                         .HasColumnType("timestamptz")
                         .HasColumnName("end_date");
 
-                    b.Property<DateTime>("ExpectedEndDate")
+                    b.Property<DateTime?>("ExpectedEndDate")
                         .HasColumnType("timestamptz")
                         .HasColumnName("expected_end_date");
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Paulino.Motorbike.Infra.Data.EF.Entities;
 using Paulino.Motorbike.Infra.Data.EF.Mapping;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Paulino.Motorbike.Infra.Data.EF
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         private readonly IConfiguration _configuration;
 
@@ -67,6 +68,21 @@ namespace Paulino.Motorbike.Infra.Data.EF
             }
 
             return result.ToString().ToLower();
+        }
+
+        public IDbContextTransaction BeginTransaction()
+        {
+            return base.Database.BeginTransaction();
+        }
+
+        public async Task AddAsync<TEntity>(TEntity entity) where TEntity : class
+        {
+            await Set<TEntity>().AddAsync(entity);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await base.SaveChangesAsync();
         }
 
         public DbSet<CNH> CNH { get; set; }

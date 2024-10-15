@@ -1,7 +1,4 @@
-﻿
-
-using FluentValidation;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Paulino.Motorbike.Domain.Base;
 using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
@@ -10,11 +7,10 @@ namespace Paulino.Motorbike.Api.Mediator
 {
     public static class MediatorActionResult
     {
-        public static async Task<IActionResult> SendActionResult(this IMediator mediator, IBaseRequest request, AbstractValidator<IBaseRequest>? validator = null, StatusCodeSuccess code = StatusCodeSuccess.OK)
+        public static async Task<IActionResult> SendActionResult(this IMediator mediator, IBaseRequest request, StatusCodeSuccess code = StatusCodeSuccess.OK)
         {
             try
             {
-                validator?.Validate(request);
                 var result = await mediator.Send(request);
 
                 if (code == StatusCodeSuccess.Created)
@@ -37,6 +33,10 @@ namespace Paulino.Motorbike.Api.Mediator
                 else if (ex is NotFoundException)
                 {
                     return new NotFoundResult();
+                }
+                else if (ex is ValidationException)
+                {
+                    return new BadRequestObjectResult(baseResponse);
                 }
 
                 throw;

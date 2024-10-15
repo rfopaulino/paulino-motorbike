@@ -1,15 +1,22 @@
-﻿using Paulino.Motorbike.Domain.Rental.Handlers;
+﻿using Moq;
+using Paulino.Motorbike.Domain.Rental.Handlers;
+using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.Data.EF;
 using Paulino.Motorbike.UnitTest.Domain.Rental.Requests;
 
 namespace Paulino.Motorbike.UnitTest.Domain.Rental.Handlers
 {
     public class SaveRentalHandlerUnitTest
     {
+        private readonly Mock<IApplicationDbContext> _dbContextMock;
+
         private readonly SaveRentalHandler _handler;
 
         public SaveRentalHandlerUnitTest()
         {
-            _handler = new SaveRentalHandler();
+            _dbContextMock = new Mock<IApplicationDbContext>();
+
+            _handler = new SaveRentalHandler(_dbContextMock.Object);
         }
 
         [Fact]
@@ -23,62 +30,6 @@ namespace Paulino.Motorbike.UnitTest.Domain.Rental.Handlers
             Assert.True(result.IsSuccess);
         }
 
-        [Fact]
-        public async Task Invalid_Default_StartDate()
-        {
-            var defaultDate = default(DateTime);
-
-            var request = new SaveRentalRequestBuilder()
-                .ChangeStartDateTo(defaultDate)
-                .Build();
-
-            var result = await _handler.Handle(request, CancellationToken.None);
-
-            Assert.False(result.IsSuccess);
-        }
-
-        [Fact]
-        public async Task Invalid_Default_EndtDate()
-        {
-            var defaultDate = default(DateTime);
-
-            var request = new SaveRentalRequestBuilder()
-                .ChangeEndDateTo(defaultDate)
-                .Build();
-
-            var result = await _handler.Handle(request, CancellationToken.None);
-
-            Assert.False(result.IsSuccess);
-        }
-
-        [Fact]
-        public async Task Invalid_Default_ExpectedEndtDate()
-        {
-            var defaultDate = default(DateTime);
-
-            var request = new SaveRentalRequestBuilder()
-                .ChangeExpectedEndDateTo(defaultDate)
-                .Build();
-
-            var result = await _handler.Handle(request, CancellationToken.None);
-
-            Assert.False(result.IsSuccess);
-        }
-
-        [Theory]
-        [InlineData(-1)]
-        [InlineData(0)]
-        public async Task Invalid_TotalAmount(decimal totalAmount)
-        {
-            var request = new SaveRentalRequestBuilder()
-                .ChangeTotalAmountTo(totalAmount)
-                .Build();
-
-            var result = await _handler.Handle(request, CancellationToken.None);
-
-            Assert.False(result.IsSuccess);
-        }
-
         [Theory]
         [InlineData(-1)]
         [InlineData(0)]
@@ -88,9 +39,9 @@ namespace Paulino.Motorbike.UnitTest.Domain.Rental.Handlers
                 .ChangeMotorbikeId(motorbikeId)
                 .Build();
 
-            var result = await _handler.Handle(request, CancellationToken.None);
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
 
-            Assert.False(result.IsSuccess);
+            Assert.IsType<ValidationException>(exception);
         }
 
         [Theory]
@@ -102,9 +53,9 @@ namespace Paulino.Motorbike.UnitTest.Domain.Rental.Handlers
                 .ChangeDriverId(motorbikeId)
                 .Build();
 
-            var result = await _handler.Handle(request, CancellationToken.None);
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
 
-            Assert.False(result.IsSuccess);
+            Assert.IsType<ValidationException>(exception);
         }
 
         [Theory]
@@ -116,9 +67,9 @@ namespace Paulino.Motorbike.UnitTest.Domain.Rental.Handlers
                 .ChangePlanId(motorbikeId)
                 .Build();
 
-            var result = await _handler.Handle(request, CancellationToken.None);
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
 
-            Assert.False(result.IsSuccess);
+            Assert.IsType<ValidationException>(exception);
         }
     }
 }

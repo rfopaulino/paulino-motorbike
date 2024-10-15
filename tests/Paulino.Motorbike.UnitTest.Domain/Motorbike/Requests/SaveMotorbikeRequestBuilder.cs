@@ -6,7 +6,7 @@ namespace Paulino.Motorbike.UnitTest.Domain.Motorbike.Requests
     {
         private int _year = 2024;
         private string _model = "sport";
-        private string _plate = "ABC-1234";
+        private string _plate = "ABC1234";
 
         public SaveMotorbikeRequestBuilder ChangeYearTo(int year)
         {

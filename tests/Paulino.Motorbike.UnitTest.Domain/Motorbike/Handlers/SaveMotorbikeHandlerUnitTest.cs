@@ -1,16 +1,22 @@
-﻿using Paulino.Motorbike.Domain.Motorbike.Handlers;
-using Paulino.Motorbike.UnitTest.Domain.Driver.Requests;
+﻿using Moq;
+using Paulino.Motorbike.Domain.Motorbike.Handlers;
+using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.Data.EF;
 using Paulino.Motorbike.UnitTest.Domain.Motorbike.Requests;
 
 namespace Paulino.Motorbike.UnitTest.Domain.Motorbike.Handlers
 {
     public class SaveMotorbikeHandlerUnitTest
     {
+        private readonly Mock<IApplicationDbContext> _dbContextMock;
+
         private readonly SaveMotorbikeHandler _handler;
 
         public SaveMotorbikeHandlerUnitTest()
         {
-            _handler = new SaveMotorbikeHandler();
+            _dbContextMock = new Mock<IApplicationDbContext>();
+
+            _handler = new SaveMotorbikeHandler(_dbContextMock.Object);
         }
 
         [Fact]
@@ -48,9 +54,9 @@ namespace Paulino.Motorbike.UnitTest.Domain.Motorbike.Handlers
                 .ChangeYearTo(year)
                 .Build();
 
-            var result = await _handler.Handle(request, CancellationToken.None);
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
 
-            Assert.False(result.IsSuccess);
+            Assert.IsType<ValidationException>(exception);
         }
 
         [Theory]
@@ -62,9 +68,9 @@ namespace Paulino.Motorbike.UnitTest.Domain.Motorbike.Handlers
                 .ChangeModelTo(model)
                 .Build();
 
-            var result = await _handler.Handle(request, CancellationToken.None);
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
 
-            Assert.False(result.IsSuccess);
+            Assert.IsType<ValidationException>(exception);
         }
 
         [Theory]
@@ -91,9 +97,9 @@ namespace Paulino.Motorbike.UnitTest.Domain.Motorbike.Handlers
                 .ChangePlateTo(model)
                 .Build();
 
-            var result = await _handler.Handle(request, CancellationToken.None);
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
 
-            Assert.False(result.IsSuccess);
+            Assert.IsType<ValidationException>(exception);
         }
     }
 }

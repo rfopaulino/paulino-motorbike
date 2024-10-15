@@ -1,15 +1,28 @@
-﻿using Paulino.Motorbike.Domain.Driver.Handlers;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using Moq;
+using Paulino.Motorbike.Domain.Driver.Handlers;
+using Paulino.Motorbike.Domain.Enums;
+using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.Data.EF;
+using Paulino.Motorbike.Infra.Data.EF.Entities;
+using Paulino.Motorbike.UnitTest.Domain.Base;
 using Paulino.Motorbike.UnitTest.Domain.Driver.Requests;
 
 namespace Paulino.Motorbike.UnitTest.Domain.Driver.Handlers
 {
     public class SaveDriverHandlerUnitTest
     {
+        private readonly Mock<IApplicationDbContext> _dbContextMock;
+        private readonly Mock<IDbContextTransaction> _transactionMock;
+
         private readonly SaveDriverHandler _handler;
 
         public SaveDriverHandlerUnitTest()
         {
-            _handler = new SaveDriverHandler();
+            _dbContextMock = new Mock<IApplicationDbContext>();
+            _transactionMock = new Mock<IDbContextTransaction>();
+
+            _handler = new SaveDriverHandler(_dbContextMock.Object);
         }
 
         [Fact]
@@ -17,6 +30,8 @@ namespace Paulino.Motorbike.UnitTest.Domain.Driver.Handlers
         {
             var request = new SaveDriverRequestBuilder()
                 .Build();
+
+            _dbContextMock.MockTransaction(_transactionMock);
 
             var result = await _handler.Handle(request, CancellationToken.None);
 
@@ -32,9 +47,11 @@ namespace Paulino.Motorbike.UnitTest.Domain.Driver.Handlers
                 .ChangeNameTo(name)
                 .Build();
 
-            var result = await _handler.Handle(request, CancellationToken.None);
+            _dbContextMock.MockTransaction(_transactionMock);
 
-            Assert.False(result.IsSuccess);
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
+
+            Assert.IsType<ValidationException>(exception);
         }
 
         [Theory]
@@ -46,9 +63,11 @@ namespace Paulino.Motorbike.UnitTest.Domain.Driver.Handlers
                 .ChangeCNPJTo(cnpj)
                 .Build();
 
+            _dbContextMock.MockTransaction(_transactionMock);
+
             var result = await _handler.Handle(request, CancellationToken.None);
 
-            Assert.False(result.IsSuccess);
+            Assert.True(result.IsSuccess);
         }
 
         [Theory]
@@ -64,9 +83,11 @@ namespace Paulino.Motorbike.UnitTest.Domain.Driver.Handlers
                 .ChangeCNPJTo(cnpj)
                 .Build();
 
-            var result = await _handler.Handle(request, CancellationToken.None);
+            _dbContextMock.MockTransaction(_transactionMock);
 
-            Assert.False(result.IsSuccess);
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
+
+            Assert.IsType<ValidationException>(exception);
         }
 
         [Theory]
@@ -77,9 +98,11 @@ namespace Paulino.Motorbike.UnitTest.Domain.Driver.Handlers
                 .ChangeCNHTo(cnh)
                 .Build();
 
+            _dbContextMock.MockTransaction(_transactionMock);
+
             var result = await _handler.Handle(request, CancellationToken.None);
 
-            Assert.False(result.IsSuccess);
+            Assert.True(result.IsSuccess);
         }
 
         [Theory]
@@ -95,9 +118,51 @@ namespace Paulino.Motorbike.UnitTest.Domain.Driver.Handlers
                 .ChangeCNHTo(cnh)
                 .Build();
 
+            _dbContextMock.MockTransaction(_transactionMock);
+
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
+
+            Assert.IsType<ValidationException>(exception);
+        }
+
+        [Theory]
+        [InlineData((int)CNHTypeEnum.A)]
+        [InlineData((int)CNHTypeEnum.B)]
+        [InlineData((int)CNHTypeEnum.AB)]
+        public async Task Valid_CNHType(int cnhType)
+        {
+            var request = new SaveDriverRequestBuilder()
+                .ChangeCNHTypeId(cnhType)
+                .Build();
+
+            _dbContextMock.MockTransaction(_transactionMock);
+
             var result = await _handler.Handle(request, CancellationToken.None);
 
-            Assert.False(result.IsSuccess);
+            Assert.True(result.IsSuccess);
+        }
+
+        [Theory]
+        [InlineData((int)CNHTypeEnum.C)]
+        [InlineData((int)CNHTypeEnum.D)]
+        [InlineData((int)CNHTypeEnum.E)]
+        [InlineData((int)CNHTypeEnum.AC)]
+        [InlineData((int)CNHTypeEnum.AD)]
+        [InlineData((int)CNHTypeEnum.BC)]
+        [InlineData((int)CNHTypeEnum.BD)]
+        [InlineData((int)CNHTypeEnum.CD)]
+        [InlineData((int)CNHTypeEnum.DE)]
+        public async Task Invalid_CNHType(int cnhType)
+        {
+            var request = new SaveDriverRequestBuilder()
+                .ChangeCNHTypeId(cnhType)
+                .Build();
+
+            _dbContextMock.MockTransaction(_transactionMock);
+
+            var exception = await Assert.ThrowsAsync<ValidationException>(() => _handler.Handle(request, CancellationToken.None));
+
+            Assert.IsType<ValidationException>(exception);
         }
     }
 }
