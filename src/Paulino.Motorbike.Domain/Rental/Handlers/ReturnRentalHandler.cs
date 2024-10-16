@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Paulino.Motorbike.Domain.Rental.Requests;
 using Paulino.Motorbike.Domain.Rental.Responses;
-using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.CrossCutting.Exception;
 using Paulino.Motorbike.Infra.Data.EF;
 using Paulino.Motorbike.Infra.Data.EF.Entities;
 

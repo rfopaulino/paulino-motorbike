@@ -21,13 +21,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Domain", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.Data", "src\Paulino.Motorbike.Infra.Data\Paulino.Motorbike.Infra.Data.csproj", "{DC8ABC0A-644D-4DDC-914B-8348FE141547}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.CrossCutting", "src\Paulino.Motorbike.Infra.CrossCutting\Paulino.Motorbike.Infra.CrossCutting.csproj", "{60EE2CDC-75DB-42E3-9AF8-5C25D5D97918}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Unit", "4.1 - Unit", "{1C50198E-7903-440B-97AE-8D7FF62BB0B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Integration", "4.2 - Integration", "{D1A5830A-1A2C-4695-B295-A4ECB7941091}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.UnitTest.Domain", "tests\Paulino.Motorbike.UnitTest.Domain\Paulino.Motorbike.UnitTest.Domain.csproj", "{0C02061E-F029-4FB4-B245-113587227071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.UnitTest.Domain", "tests\Paulino.Motorbike.UnitTest.Domain\Paulino.Motorbike.UnitTest.Domain.csproj", "{0C02061E-F029-4FB4-B245-113587227071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.Enum", "src\Paulino.Motorbike.Infra.CrossCutting.Enum\Paulino.Motorbike.Infra.CrossCutting.Enum.csproj", "{AE22E259-4B11-46F4-B4EF-8F361A0E356A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.Image", "src\Paulino.Motorbike.Infra.CrossCutting.Image\Paulino.Motorbike.Infra.CrossCutting.Image.csproj", "{0AB8F6E2-4116-4CF2-ACDB-46DF1A0315BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.Regex", "src\Paulino.Motorbike.Infra.CrossCutting.Regex\Paulino.Motorbike.Infra.CrossCutting.Regex.csproj", "{70D60729-561D-4505-8844-BE876190DFB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.Exception", "src\Paulino.Motorbike.Infra.CrossCutting.Exception\Paulino.Motorbike.Infra.CrossCutting.Exception.csproj", "{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,14 +53,26 @@ Global
 		{DC8ABC0A-644D-4DDC-914B-8348FE141547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC8ABC0A-644D-4DDC-914B-8348FE141547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC8ABC0A-644D-4DDC-914B-8348FE141547}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60EE2CDC-75DB-42E3-9AF8-5C25D5D97918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60EE2CDC-75DB-42E3-9AF8-5C25D5D97918}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60EE2CDC-75DB-42E3-9AF8-5C25D5D97918}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60EE2CDC-75DB-42E3-9AF8-5C25D5D97918}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C02061E-F029-4FB4-B245-113587227071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C02061E-F029-4FB4-B245-113587227071}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C02061E-F029-4FB4-B245-113587227071}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C02061E-F029-4FB4-B245-113587227071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE22E259-4B11-46F4-B4EF-8F361A0E356A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE22E259-4B11-46F4-B4EF-8F361A0E356A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE22E259-4B11-46F4-B4EF-8F361A0E356A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE22E259-4B11-46F4-B4EF-8F361A0E356A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB8F6E2-4116-4CF2-ACDB-46DF1A0315BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB8F6E2-4116-4CF2-ACDB-46DF1A0315BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB8F6E2-4116-4CF2-ACDB-46DF1A0315BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB8F6E2-4116-4CF2-ACDB-46DF1A0315BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70D60729-561D-4505-8844-BE876190DFB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D60729-561D-4505-8844-BE876190DFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D60729-561D-4505-8844-BE876190DFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D60729-561D-4505-8844-BE876190DFB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,10 +83,13 @@ Global
 		{62A487FA-13D5-4685-B2A8-061A4949E756} = {ECFF7985-6281-4C9A-8E81-A2AF40BB946D}
 		{666DF7EA-555B-48F0-B072-A36E0BC05D48} = {BD23E61D-CBA3-49E1-8DC4-1487FBC588C5}
 		{DC8ABC0A-644D-4DDC-914B-8348FE141547} = {D24AE091-10B4-4772-B6D6-417ED16F08ED}
-		{60EE2CDC-75DB-42E3-9AF8-5C25D5D97918} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
 		{1C50198E-7903-440B-97AE-8D7FF62BB0B2} = {9DA5C730-2964-4A3B-96EB-F89288229EAA}
 		{D1A5830A-1A2C-4695-B295-A4ECB7941091} = {9DA5C730-2964-4A3B-96EB-F89288229EAA}
 		{0C02061E-F029-4FB4-B245-113587227071} = {1C50198E-7903-440B-97AE-8D7FF62BB0B2}
+		{AE22E259-4B11-46F4-B4EF-8F361A0E356A} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
+		{0AB8F6E2-4116-4CF2-ACDB-46DF1A0315BA} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
+		{70D60729-561D-4505-8844-BE876190DFB7} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
+		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F2C6219-77ED-4697-BB41-1CA6DC5E0713}

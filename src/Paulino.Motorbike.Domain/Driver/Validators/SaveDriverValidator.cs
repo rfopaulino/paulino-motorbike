@@ -1,7 +1,7 @@
 ﻿using DocumentValidator;
 using FluentValidation;
 using Paulino.Motorbike.Domain.Driver.Requests;
-using Paulino.Motorbike.Domain.Enums;
+using Paulino.Motorbike.Infra.CrossCutting.Enum;
 
 namespace Paulino.Motorbike.Domain.Driver.Validators
 {

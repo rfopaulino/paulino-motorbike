@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Paulino.Motorbike.Domain.Base;
 using Paulino.Motorbike.Domain.Rental.Requests;
 using Paulino.Motorbike.Domain.Rental.Validators;
-using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.CrossCutting.Exception;
 using Paulino.Motorbike.Infra.Data.Dapper.Base;
 using Paulino.Motorbike.Infra.Data.Dapper.Dtos;
 using Paulino.Motorbike.Infra.Data.Dapper.Queries;

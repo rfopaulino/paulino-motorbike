@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using Moq;
 using Paulino.Motorbike.Domain.Driver.Handlers;
-using Paulino.Motorbike.Domain.Enums;
-using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.CrossCutting.Enum;
+using Paulino.Motorbike.Infra.CrossCutting.Exception;
 using Paulino.Motorbike.Infra.Data.Dapper.Base;
 using Paulino.Motorbike.Infra.Data.EF;
 using Paulino.Motorbike.UnitTest.Domain.Base;

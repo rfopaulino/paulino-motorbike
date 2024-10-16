@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Paulino.Motorbike.Domain.Base;
-using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.CrossCutting.Exception;
 
 namespace Paulino.Motorbike.Api.Mediator
 {

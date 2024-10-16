@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Paulino.Motorbike.Domain.Driver.Requests;
 using Paulino.Motorbike.Domain.Driver.Responses;
-using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.CrossCutting.Exception;
 using Paulino.Motorbike.Infra.Data.EF;
 
 namespace Paulino.Motorbike.Domain.Driver.Handlers

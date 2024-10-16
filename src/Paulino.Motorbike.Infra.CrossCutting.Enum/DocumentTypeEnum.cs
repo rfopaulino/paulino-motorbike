@@ -1,4 +1,4 @@
-﻿namespace Paulino.Motorbike.Domain.Enums
+﻿namespace Paulino.Motorbike.Infra.CrossCutting.Enum
 {
     public enum DocumentTypeEnum
     {

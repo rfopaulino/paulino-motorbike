@@ -9,7 +9,7 @@ namespace Paulino.Motorbike.Domain.Base
             var result = validator?.Validate(instance);
             if (!result?.IsValid ?? true)
             {
-                throw new Infra.CrossCutting.Exceptions.ValidationException(result.Errors.Select(x => x.ErrorMessage));
+                throw new Infra.CrossCutting.Exception.ValidationException(result.Errors.Select(x => x.ErrorMessage));
             }
         }
     }

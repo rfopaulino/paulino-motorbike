@@ -1,6 +1,6 @@
-﻿namespace Paulino.Motorbike.Infra.CrossCutting.Exceptions
+﻿namespace Paulino.Motorbike.Infra.CrossCutting.Exception
 {
-    public class ValidationException : Exception
+    public class ValidationException : System.Exception
     {
         public IEnumerable<string> Errors { get; }
 

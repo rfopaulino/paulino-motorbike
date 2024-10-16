@@ -1,6 +1,6 @@
 ﻿using Moq;
 using Paulino.Motorbike.Domain.Motorbike.Handlers;
-using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.CrossCutting.Exception;
 using Paulino.Motorbike.Infra.Data.Dapper.Base;
 using Paulino.Motorbike.Infra.Data.EF;
 using Paulino.Motorbike.UnitTest.Domain.Motorbike.Requests;

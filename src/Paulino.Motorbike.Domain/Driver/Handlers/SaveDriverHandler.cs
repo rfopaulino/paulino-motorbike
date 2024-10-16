@@ -2,7 +2,7 @@
 using Paulino.Motorbike.Domain.Base;
 using Paulino.Motorbike.Domain.Driver.Requests;
 using Paulino.Motorbike.Domain.Driver.Validators;
-using Paulino.Motorbike.Infra.CrossCutting.Exceptions;
+using Paulino.Motorbike.Infra.CrossCutting.Exception;
 using Paulino.Motorbike.Infra.Data.Dapper.Base;
 using Paulino.Motorbike.Infra.Data.Dapper.Dtos;
 using Paulino.Motorbike.Infra.Data.Dapper.Queries;
