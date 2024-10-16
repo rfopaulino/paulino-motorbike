@@ -40,6 +40,7 @@ namespace Paulino.Motorbike.Infra.Data.EF
             modelBuilder.ApplyConfiguration(new RentalFineMap());
             modelBuilder.ApplyConfiguration(new RentalMap());
             modelBuilder.ApplyConfiguration(new RentalPaymentMap());
+            modelBuilder.ApplyConfiguration(new Motorbike2024Map());
 
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
@@ -98,5 +99,6 @@ namespace Paulino.Motorbike.Infra.Data.EF
         public DbSet<Rental> Rental { get; set; }
         public DbSet<RentalFine> RentalFine { get; set; }
         public DbSet<RentalPayment> RentalPayment { get; set; }
+        public DbSet<Motorbike2024> Motorbike2024 { get; set; }
     }
 }

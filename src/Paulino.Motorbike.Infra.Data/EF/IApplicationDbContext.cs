@@ -17,7 +17,8 @@ namespace Paulino.Motorbike.Infra.Data.EF
         public DbSet<Plan> Plan { get; }
         public DbSet<Rental> Rental { get; }
         public DbSet<RentalFine> RentalFine { get; }
-        public DbSet<RentalPayment> RentalPayment { get; set; }
+        public DbSet<RentalPayment> RentalPayment { get; }
+        public DbSet<Motorbike2024> Motorbike2024 { get; }
 
         IDbContextTransaction BeginTransaction();
         Task AddAsync<TEntity>(TEntity entity) where TEntity : class;

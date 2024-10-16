@@ -27,13 +27,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Integration", "4.2 - 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.UnitTest.Domain", "tests\Paulino.Motorbike.UnitTest.Domain\Paulino.Motorbike.UnitTest.Domain.csproj", "{0C02061E-F029-4FB4-B245-113587227071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.Enum", "src\Paulino.Motorbike.Infra.CrossCutting.Enum\Paulino.Motorbike.Infra.CrossCutting.Enum.csproj", "{AE22E259-4B11-46F4-B4EF-8F361A0E356A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.CrossCutting.Enum", "src\Paulino.Motorbike.Infra.CrossCutting.Enum\Paulino.Motorbike.Infra.CrossCutting.Enum.csproj", "{AE22E259-4B11-46F4-B4EF-8F361A0E356A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.Image", "src\Paulino.Motorbike.Infra.CrossCutting.Image\Paulino.Motorbike.Infra.CrossCutting.Image.csproj", "{0AB8F6E2-4116-4CF2-ACDB-46DF1A0315BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.CrossCutting.Image", "src\Paulino.Motorbike.Infra.CrossCutting.Image\Paulino.Motorbike.Infra.CrossCutting.Image.csproj", "{0AB8F6E2-4116-4CF2-ACDB-46DF1A0315BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.Regex", "src\Paulino.Motorbike.Infra.CrossCutting.Regex\Paulino.Motorbike.Infra.CrossCutting.Regex.csproj", "{70D60729-561D-4505-8844-BE876190DFB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.CrossCutting.Regex", "src\Paulino.Motorbike.Infra.CrossCutting.Regex\Paulino.Motorbike.Infra.CrossCutting.Regex.csproj", "{70D60729-561D-4505-8844-BE876190DFB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.Exception", "src\Paulino.Motorbike.Infra.CrossCutting.Exception\Paulino.Motorbike.Infra.CrossCutting.Exception.csproj", "{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.CrossCutting.Exception", "src\Paulino.Motorbike.Infra.CrossCutting.Exception\Paulino.Motorbike.Infra.CrossCutting.Exception.csproj", "{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.EventBus", "src\Paulino.Motorbike.Infra.CrossCutting.EventBus\Paulino.Motorbike.Infra.CrossCutting.EventBus.csproj", "{9473ACEF-B186-49E6-8900-E255805F563C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9473ACEF-B186-49E6-8900-E255805F563C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9473ACEF-B186-49E6-8900-E255805F563C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9473ACEF-B186-49E6-8900-E255805F563C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9473ACEF-B186-49E6-8900-E255805F563C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{0AB8F6E2-4116-4CF2-ACDB-46DF1A0315BA} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
 		{70D60729-561D-4505-8844-BE876190DFB7} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
 		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
+		{9473ACEF-B186-49E6-8900-E255805F563C} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F2C6219-77ED-4697-BB41-1CA6DC5E0713}

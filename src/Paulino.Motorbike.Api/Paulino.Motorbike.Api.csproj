@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Paulino.Motorbike.Domain\Paulino.Motorbike.Domain.csproj" />
+    <ProjectReference Include="..\Paulino.Motorbike.Infra.CrossCutting.EventBus\Paulino.Motorbike.Infra.CrossCutting.EventBus.csproj" />
     <ProjectReference Include="..\Paulino.Motorbike.Infra.Data\Paulino.Motorbike.Infra.Data.csproj" />
   </ItemGroup>
 

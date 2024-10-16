@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Paulino.Motorbike.Infra.CrossCutting.Enum\Paulino.Motorbike.Infra.CrossCutting.Enum.csproj" />
+    <ProjectReference Include="..\Paulino.Motorbike.Infra.CrossCutting.EventBus\Paulino.Motorbike.Infra.CrossCutting.EventBus.csproj" />
     <ProjectReference Include="..\Paulino.Motorbike.Infra.CrossCutting.Exception\Paulino.Motorbike.Infra.CrossCutting.Exception.csproj" />
     <ProjectReference Include="..\Paulino.Motorbike.Infra.CrossCutting.Image\Paulino.Motorbike.Infra.CrossCutting.Image.csproj" />
     <ProjectReference Include="..\Paulino.Motorbike.Infra.CrossCutting.Regex\Paulino.Motorbike.Infra.CrossCutting.Regex.csproj" />
