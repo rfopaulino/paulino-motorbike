@@ -31,6 +31,7 @@ namespace Paulino.Motorbike.Domain.Motorbike.Handlers
             var motorbikes = await query
                 .Select(x => new GetMotorbikeResponse
                 {
+                    Id = x.Id,
                     Year = x.Year,
                     Model = x.Model,
                     Plate = x.Plate

@@ -8,6 +8,7 @@ namespace Paulino.Motorbike.Infra.Data.EF.Entities
 
         public Rental(DateTime startDate, DateTime endDate, decimal totalAmount, Motorbike motorbike, Driver driver, Plan plan)
         {
+            OriginalAmount = totalAmount;
             TotalAmount = totalAmount;
             Motorbike = motorbike;
             Driver = driver;
@@ -19,7 +20,10 @@ namespace Paulino.Motorbike.Infra.Data.EF.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime? ExpectedEndDate { get; set; }
+        public DateTime? ClosingDate { get; set; }
+        public decimal OriginalAmount { get; set; }
         public decimal TotalAmount { get; set; }
+        public decimal PaidAmount { get; set; }
 
         public int MotorbikeId { get; set; }
         public Motorbike Motorbike { get; set; }

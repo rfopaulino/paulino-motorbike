@@ -6,7 +6,7 @@ namespace Paulino.Motorbike.Infra.Data.Dapper.Queries
     {
         public int MotorbikeId { get; } = motorbikeId;
 
-        public string Query => "select id from public.rental where driver_id = @DriverId and is_active = true";
+        public string Query => "select id from rental where motorbike_id = @MotorbikeId and is_active = true";
 
         public object Params => new { MotorbikeId };
     }

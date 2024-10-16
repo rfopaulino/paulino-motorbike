@@ -26,7 +26,12 @@ namespace Paulino.Motorbike.Domain.Rental.Handlers
                     StartDate = x.StartDate,
                     EndDate = x.EndDate,
                     ExpectedEndDate = x.ExpectedEndDate,
-                    TotalAmount = x.TotalAmount
+                    OriginalAmount = x.OriginalAmount,
+                    TotalAmount = x.TotalAmount,
+                    PaidAmount = x.PaidAmount,
+                    MotorbikeId = x.MotorbikeId,
+                    DriverId = x.DriverId,
+                    PlanId = x.PlanId
                 })
                 .FirstOrDefaultAsync();
 

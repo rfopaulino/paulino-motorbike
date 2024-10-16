@@ -6,7 +6,7 @@ namespace Paulino.Motorbike.Infra.Data.Dapper.Queries
     {
         public string Cnpj { get; } = cnpj;
 
-        public string Query => "select id from public.driver where cnpj = @cnpj";
+        public string Query => "select id from driver where cnpj = @cnpj";
 
         public object Params => new { cnpj };
     }

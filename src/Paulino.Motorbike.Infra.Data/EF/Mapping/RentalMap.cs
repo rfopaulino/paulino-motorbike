@@ -16,7 +16,10 @@ namespace Paulino.Motorbike.Infra.Data.EF.Mapping
             builder.Property(x => x.StartDate).HasColumnType("timestamptz").IsRequired();
             builder.Property(x => x.EndDate).HasColumnType("timestamptz").IsRequired();
             builder.Property(x => x.ExpectedEndDate).HasColumnType("timestamptz").IsRequired(false);
+            builder.Property(x => x.ClosingDate).HasColumnType("timestamptz").IsRequired(false);
+            builder.Property(x => x.OriginalAmount).HasColumnType("decimal(16,4)").IsRequired();
             builder.Property(x => x.TotalAmount).HasColumnType("decimal(16,4)").IsRequired();
+            builder.Property(x => x.PaidAmount).HasColumnType("decimal(16,4)").IsRequired();
             builder.Property(x => x.MotorbikeId).HasColumnType("integer").IsRequired();
             builder.Property(x => x.DriverId).HasColumnType("integer").IsRequired();
             builder.Property(x => x.PlanId).HasColumnType("integer").IsRequired();

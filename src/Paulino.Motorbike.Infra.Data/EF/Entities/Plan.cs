@@ -6,7 +6,7 @@ namespace Paulino.Motorbike.Infra.Data.EF.Entities
     {
         public int TermDays { get; set; }
         public decimal DailyAmount { get; set; }
-        public decimal AdditionalDaily { get; set; }
+        public decimal AdditionalDailyAmount { get; set; }
         public decimal PercentageFine { get; set; }
         public bool IsActive { get; set; }
     }

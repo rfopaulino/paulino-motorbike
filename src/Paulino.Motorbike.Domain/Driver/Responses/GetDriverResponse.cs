@@ -7,5 +7,6 @@
         public string CNPJ { get; set; }
         public DateTime Birthdate { get; set; }
         public string CNHNumber { get; set; }
+        public string? CNHImage { get; set; }
     }
 }

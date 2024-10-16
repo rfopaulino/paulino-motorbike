@@ -6,7 +6,7 @@ namespace Paulino.Motorbike.Infra.Data.Dapper.Queries
     {
         public string Plate { get; } = plate;
 
-        public string Query => "select id from public.motorbike where plate = @plate";
+        public string Query => "select id from motorbike where plate = @plate";
 
         public object Params => new { plate };
     }

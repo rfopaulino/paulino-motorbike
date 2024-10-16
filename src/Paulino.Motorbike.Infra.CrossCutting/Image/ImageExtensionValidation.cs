@@ -1,6 +1,4 @@
-﻿using SkiaSharp;
-
-namespace Paulino.Motorbike.Infra.CrossCutting.Image
+﻿namespace Paulino.Motorbike.Infra.CrossCutting.Image
 {
     public static class ImageExtensionValidation
     {
@@ -13,7 +11,7 @@ namespace Paulino.Motorbike.Infra.CrossCutting.Image
                 return false;
             }
 
-            return extension == SKEncodedImageFormat.Png || extension == SKEncodedImageFormat.Bmp;
+            return extension == ImageExtensionEnum.PNG.ToString().ToLower() || extension == ImageExtensionEnum.BMP.ToString().ToLower();
         }
     }
 }

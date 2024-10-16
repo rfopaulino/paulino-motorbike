@@ -23,7 +23,7 @@ namespace Paulino.Motorbike.Domain.Plan.Handlers
                     Id = x.Id,
                     TermDays = x.TermDays,
                     DailyAmount = x.DailyAmount,
-                    AdditionalDaily = x.AdditionalDaily,
+                    AdditionalDaily = x.AdditionalDailyAmount,
                     PercentageFine = x.PercentageFine,
                     IsActive = x.IsActive
                 })

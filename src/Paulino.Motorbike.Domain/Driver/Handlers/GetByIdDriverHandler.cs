@@ -20,6 +20,7 @@ namespace Paulino.Motorbike.Domain.Driver.Handlers
         {
             var driver = await _dbContext.Driver
                 .Include(x => x.CNH)
+                .ThenInclude(x => x.Document)
                 .Where(x => x.Id == request.Id)
                 .Select(x => new GetByIdDriverResponse
                 {
@@ -27,7 +28,8 @@ namespace Paulino.Motorbike.Domain.Driver.Handlers
                     Name = x.Name,
                     CNPJ = x.CNPJ,
                     Birthdate = x.Birthdate,
-                    CNHNumber = x.CNH.Number
+                    CNHNumber = x.CNH.Number,
+                    CNHImage = x.CNH.Document.Image
                 })
                 .FirstOrDefaultAsync();
 

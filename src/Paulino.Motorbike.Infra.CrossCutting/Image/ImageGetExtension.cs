@@ -4,7 +4,7 @@ namespace Paulino.Motorbike.Infra.CrossCutting.Image
 {
     public static class ImageGetExtension
     {
-        public static SKEncodedImageFormat? Get(string base64)
+        public static string? Get(string base64)
         {
             if (string.IsNullOrEmpty(base64))
             {
@@ -24,7 +24,7 @@ namespace Paulino.Motorbike.Infra.CrossCutting.Image
                             return null;
                         }
 
-                        return codec.EncodedFormat;
+                        return codec.EncodedFormat.ToString().ToLower();
                     }
                 }
             }

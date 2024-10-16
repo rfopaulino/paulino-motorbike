@@ -22,6 +22,7 @@ namespace Paulino.Motorbike.Domain.Motorbike.Handlers
                 .Where(x => x.Id == request.Id)
                 .Select(x => new GetByIdMotorbikeResponse
                 {
+                    Id = x.Id,
                     Year = x.Year,
                     Model = x.Model,
                     Plate = x.Plate
