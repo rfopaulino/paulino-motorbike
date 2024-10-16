@@ -1,9 +1,8 @@
-using MediatR;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Paulino.Motorbike.Api.Consumers;
 using Paulino.Motorbike.Domain.Base;
-using Paulino.Motorbike.Domain.Consumers;
 using Paulino.Motorbike.Infra.CrossCutting.EventBus;
 using Paulino.Motorbike.Infra.Data.Dapper.Base;
 using Paulino.Motorbike.Infra.Data.EF;

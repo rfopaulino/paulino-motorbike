@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Paulino.Motorbike.Domain.Motorbike.Requests;
 using Paulino.Motorbike.Infra.CrossCutting.EventBus;
@@ -7,7 +6,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 
-namespace Paulino.Motorbike.Domain.Consumers
+namespace Paulino.Motorbike.Api.Consumers
 {
     public class NewMotorbike2024Consumer : IConsumer
     {
