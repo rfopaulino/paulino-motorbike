@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.Cro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.CrossCutting.EventBus", "src\Paulino.Motorbike.Infra.CrossCutting.EventBus\Paulino.Motorbike.Infra.CrossCutting.EventBus.csproj", "{9473ACEF-B186-49E6-8900-E255805F563C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.Data.Identity", "src\Paulino.Motorbike.Infra.Data.Identity\Paulino.Motorbike.Infra.Data.Identity.csproj", "{113AED56-E8B1-40E8-AC08-E6E4AF794AB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.Data.Identity", "src\Paulino.Motorbike.Infra.Data.Identity\Paulino.Motorbike.Infra.Data.Identity.csproj", "{113AED56-E8B1-40E8-AC08-E6E4AF794AB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

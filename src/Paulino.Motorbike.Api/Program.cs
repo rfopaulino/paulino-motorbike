@@ -180,6 +180,12 @@ app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
 {
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate();
+
+    var identity = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
+    identity.Database.Migrate();
+
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
     var roles = new[] { "admin", "driver" };
@@ -191,15 +197,6 @@ using (var scope = app.Services.CreateScope())
             await roleManager.CreateAsync(new IdentityRole(role));
         }
     }
-}
-
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();
-
-    var identity = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
-    identity.Database.Migrate();
 }
 
 _ = app.Services.GetRequiredService<IEventBus>();
