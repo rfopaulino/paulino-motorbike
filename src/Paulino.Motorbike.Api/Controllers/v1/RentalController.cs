@@ -26,7 +26,7 @@ namespace Paulino.Motorbike.Api.Controllers.v1
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Save(SaveRentalRequest request) =>
-            await _mediator.SendActionResult(request);
+            await _mediator.SendActionResult(request,StatusCodeSuccess.Created);
 
         [HttpGet("{id}")]
         [SwaggerOperation(Summary = "Consultar locações existentes por id")]
@@ -48,6 +48,6 @@ namespace Paulino.Motorbike.Api.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Return(int id, ReturnRentalRequest request) =>
-            await _mediator.SendActionResult(new ReturnRentalRequest(request.Date, id));
+            await _mediator.SendActionResult(new ReturnRentalRequest(request.Date, id), StatusCodeSuccess.Created);
     }
 }

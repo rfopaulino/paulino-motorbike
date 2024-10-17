@@ -13,7 +13,7 @@ namespace Paulino.Motorbike.Api.Mediator
 
                 if (code == StatusCodeSuccess.Created)
                 {
-                    return new CreatedResult();
+                    return new CreatedResult(default(string?), result);
                 }
                 else
                 {

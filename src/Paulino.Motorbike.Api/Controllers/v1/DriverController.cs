@@ -26,7 +26,7 @@ namespace Paulino.Motorbike.Api.Controllers.v1
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Save(SaveDriverRequest request) =>
-            await _mediator.SendActionResult(request);
+            await _mediator.SendActionResult(request, StatusCodeSuccess.Created);
 
         [HttpGet("{id}")]
         [SwaggerOperation(Summary = "Consultar entregadores existentes por id")]
