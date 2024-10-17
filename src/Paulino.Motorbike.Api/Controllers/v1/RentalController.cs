@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace Paulino.Motorbike.Api.Controllers.v1
 {
-    [Authorize(Roles = "admin")]
+    [Authorize]
     [Route("v1/[controller]")]
     [Produces("application/json")]
     [ApiController]

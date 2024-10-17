@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Paulino.Motorbike.Api.Consumers;
 using Paulino.Motorbike.Domain.Base;
 using Paulino.Motorbike.Infra.CrossCutting.EventBus;
+using Paulino.Motorbike.Infra.CrossCutting.Exception;
 using Paulino.Motorbike.Infra.Data.Dapper.Base;
 using Paulino.Motorbike.Infra.Data.EF;
 using Paulino.Motorbike.Infra.Data.Identity;
@@ -125,6 +128,47 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseExceptionHandler(x =>
+{
+    x.Run(async context =>
+    {
+        var errorFeature = context.Features.Get<IExceptionHandlerPathFeature>();
+        var exception = errorFeature.Error;
+
+        switch (exception)
+        {
+            case ValidationException:
+                {
+                    var errors = ((ValidationException)exception).Errors;
+
+                    context.Response.StatusCode = 400;
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject(new { message = errors }));
+                }
+                break;
+
+            case BadRequestException:
+                {
+                    context.Response.StatusCode = 400;
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject(new { message = new string[1] { exception.Message } }));
+                }
+                break;
+
+            case NotFoundException:
+                {
+                    context.Response.StatusCode = 404;
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject(new { message = new string[1] { exception.Message } }));
+                }
+                break;
+
+            default:
+                throw exception;
+        }
+    });
+});
 
 app.UseHttpsRedirection();
 
