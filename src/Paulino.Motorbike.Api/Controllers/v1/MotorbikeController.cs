@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Paulino.Motorbike.Api.Mediator;
 using Paulino.Motorbike.Domain.Motorbike.Requests;
@@ -6,6 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace Paulino.Motorbike.Api.Controllers.v1
 {
+    [Authorize(Roles = "admin")]
     [Route("v1/[controller]")]
     [Produces("application/json")]
     [ApiController]

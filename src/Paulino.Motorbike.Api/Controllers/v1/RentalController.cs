@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Paulino.Motorbike.Api.Mediator;
 using Paulino.Motorbike.Domain.Rental.Requests;
@@ -6,6 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace Paulino.Motorbike.Api.Controllers.v1
 {
+    [Authorize(Roles = "admin")]
     [Route("v1/[controller]")]
     [Produces("application/json")]
     [ApiController]
@@ -18,6 +20,7 @@ namespace Paulino.Motorbike.Api.Controllers.v1
             _mediator = mediator;
         }
 
+        [Authorize(Roles = "driver")]
         [HttpPost]
         [SwaggerOperation(Summary = "Alugar uma moto")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -39,6 +42,7 @@ namespace Paulino.Motorbike.Api.Controllers.v1
         public async Task<IActionResult> Get([FromQuery] int? motorbikeId, [FromQuery] int? driverId) =>
             await _mediator.SendActionResult(new GetRentalRequest(motorbikeId, driverId));
 
+        [Authorize(Roles = "driver")]
         [HttpPut("{id}/return")]
         [SwaggerOperation(Summary = "Devolver uma moto")]
         [ProducesResponseType(StatusCodes.Status200OK)]

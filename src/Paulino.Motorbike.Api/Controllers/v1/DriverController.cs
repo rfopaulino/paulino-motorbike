@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Paulino.Motorbike.Api.Mediator;
 using Paulino.Motorbike.Domain.Driver.Requests;
@@ -6,6 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace Paulino.Motorbike.Api.Controllers.v1
 {
+    [Authorize(Roles = "admin")]
     [Route("v1/[controller]")]
     [Produces("application/json")]
     [ApiController]
@@ -18,6 +20,7 @@ namespace Paulino.Motorbike.Api.Controllers.v1
             _mediator = mediator;
         }
 
+        [Authorize(Roles = "driver")]
         [HttpPost]
         [SwaggerOperation(Summary = "Cadastrar entregador")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -39,6 +42,7 @@ namespace Paulino.Motorbike.Api.Controllers.v1
         public async Task<IActionResult> Get([FromQuery] string? cnh , [FromQuery] string? cnpj) =>
             await _mediator.SendActionResult(new GetDriverRequest(cnh, cnpj));
 
+        [Authorize(Roles = "driver")]
         [HttpPost("{id}/cnh")]
         [SwaggerOperation(Summary = "Enviar foto da CNH")]
         [ProducesResponseType(StatusCodes.Status201Created)]

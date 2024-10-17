@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.Cro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.CrossCutting.Exception", "src\Paulino.Motorbike.Infra.CrossCutting.Exception\Paulino.Motorbike.Infra.CrossCutting.Exception.csproj", "{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.CrossCutting.EventBus", "src\Paulino.Motorbike.Infra.CrossCutting.EventBus\Paulino.Motorbike.Infra.CrossCutting.EventBus.csproj", "{9473ACEF-B186-49E6-8900-E255805F563C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paulino.Motorbike.Infra.CrossCutting.EventBus", "src\Paulino.Motorbike.Infra.CrossCutting.EventBus\Paulino.Motorbike.Infra.CrossCutting.EventBus.csproj", "{9473ACEF-B186-49E6-8900-E255805F563C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paulino.Motorbike.Infra.Data.Identity", "src\Paulino.Motorbike.Infra.Data.Identity\Paulino.Motorbike.Infra.Data.Identity.csproj", "{113AED56-E8B1-40E8-AC08-E6E4AF794AB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{9473ACEF-B186-49E6-8900-E255805F563C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9473ACEF-B186-49E6-8900-E255805F563C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9473ACEF-B186-49E6-8900-E255805F563C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{113AED56-E8B1-40E8-AC08-E6E4AF794AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{113AED56-E8B1-40E8-AC08-E6E4AF794AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{113AED56-E8B1-40E8-AC08-E6E4AF794AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{113AED56-E8B1-40E8-AC08-E6E4AF794AB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{70D60729-561D-4505-8844-BE876190DFB7} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
 		{1FC6D1CE-9926-49D3-853C-B11C9D17E8FB} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
 		{9473ACEF-B186-49E6-8900-E255805F563C} = {0EA4F73C-3DE1-404C-A927-0A4FB94D58DC}
+		{113AED56-E8B1-40E8-AC08-E6E4AF794AB7} = {D24AE091-10B4-4772-B6D6-417ED16F08ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F2C6219-77ED-4697-BB41-1CA6DC5E0713}
