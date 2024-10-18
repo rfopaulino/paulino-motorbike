@@ -20,7 +20,6 @@ Aplicação para gerenciar aluguel de motos e entregadores.
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-- [x] .NET 8.0 instalado
 - [x] Docker instalado
 
 ## Instalação
@@ -34,4 +33,32 @@ Siga as etapas abaixo para configurar o projeto em sua máquina local:
    ```bash
    docker compose up -d
 
-Feito isso o projeto estará rodando em http://localhost:8080/swagger/index.html
+## Acesse a Aplicação
+
+Nesta etapa a aplicação já deve estar rodando e poderá ser acessada como mostrado abaixo:
+
+- Documentação da API - http://localhost:8080/swagger/index.html
+
+- RabbitMQ - http://localhost:15672
+   - Username = guest
+   - Password = guest
+
+_Caso a aplicação não esteja respondendo na porta 8080 repita o comando `docker compose up -d`_
+
+## Permissionamento
+
+Para utilizar as APIs do projeto, é necessário seguir os passos abaixo:
+
+1. **Criar um Usuário**
+- Utilize o endpoint `/Account/Register` para criar um novo usuário. Os seguintes dados são necessários:
+   - **username**: Nome de usuário desejado
+   - **password**: Senha do usuário
+   - **role**: Defina o papel do usuário como `admin` ou `driver`
+   - **email**: Endereço de e-mail
+
+2. **Gerar um jwt token**
+- Após criar o usuário, informe a suas credenciais no endpoint `/Account/Auth` e tenha acesso ao seu token de usuário.
+
+3. **Autenticar**
+- O token gerado deve ser utilizado nas requisições subsequentes.
+   - Utilize o botão 'Authorize' no topo da tela e armazene o token gerado para usar os endpoints direto pela documentação da API.
